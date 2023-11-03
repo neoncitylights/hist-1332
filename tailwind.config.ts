@@ -15,9 +15,11 @@ const config: Config = {
         ytRed: '#ff0000',
       },
       fontFamily: {
-        generalSans: ['var(--font-general-sans)', 'sans-serif'],
+        sans: ['var(--font-sora)', 'sans-serif'],
+        sora: ['var(--font-sora)', 'sans-serif'],
         bespokeSerif: ['var(--font-bespoke-serif)', 'serif'],
         mono: ['SF Mono', 'monospace'],
+        // generalSans: ['var(--font-general-sans)', 'sans-serif'],
       },
     },
   },

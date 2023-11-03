@@ -1,21 +1,27 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { Inter } from 'next/font/google'
 import { twMerge } from 'tailwind-merge'
+import { SiteHeader } from '@/components/SiteHeader'
+import { ComponentProps } from 'react'
+import { IconBrandUnsplash } from '@tabler/icons-react'
+import Link from 'next/link'
 
 /** typefaces */
-const generalSans = localFont({
+const inter = Inter({ subsets: ['latin'] })
+const sora = localFont({
   src: [
     {
-      path: './../../public/fonts/GeneralSans-Variable.ttf',
+      path: './../../public/fonts/Sora-Variable.ttf',
       style: 'normal',
     },
     {
-      path: './../../public/fonts/GeneralSans-VariableItalic.ttf',
+      path: './../../public/fonts/Sora-VariableItalic.ttf',
       style: 'italic',
     },
   ],
-  variable: '--font-general-sans',
+  variable: '--font-sora',
 })
 const bespokeSerif = localFont({
   src: [
@@ -43,14 +49,45 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const styles = twMerge(
-    'bg-black text-white',
-    generalSans.variable,
+    inter.className,
+    sora.variable,
     bespokeSerif.variable,
+    'bg-white',
+    'flex flex-col gap-12 min-h-screen',
+    'font-sans',
   )
 
   return (
     <html lang="en">
-      <body className={styles}>{children}</body>
+      <body className={styles}>
+        <SiteHeader />
+        <main className="px-48">
+        {children}
+        </main>
+        <SiteFooter />
+      </body>
     </html>
+  )
+}
+
+type SiteFooterProps = ComponentProps<'footer'>
+const SiteFooter = ({ ...props }: SiteFooterProps) => {
+  return (
+    <footer className={twMerge(
+      'px-48 py-12',
+      'bg-slate-200 text-slate-700',
+      'mt-auto',
+    )} {...props}>
+      <span className='flex flex-row gap-4 items-start'>
+        <IconBrandUnsplash size={48} strokeWidth={1} />
+        <span className='flex flex-col gap-1 text-sm'>
+          <span className='font-bold'>Images</span>
+          <p>
+            All images are, unless otherwise stated, from Unsplash,<br />
+            which are freely licensed under the <Link href="https://unsplash.com/license" className='text-blue-600'>Unsplash License</Link>.
+          </p>
+        </span>
+      </span>
+    </footer>
   )
 }

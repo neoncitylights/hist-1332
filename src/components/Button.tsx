@@ -8,11 +8,11 @@ export type ButtonProps = HtmlButtonProps & {
 export const Button = ({children, className, kind = 'primary', ...props}: ButtonProps) => {
 	const styles = twMerge(
 		'appearance-none',
-		'flex flex-row items-center justify-center gap-2',
+		'inline-flex flex-row items-center justify-center gap-2',
 		'py-2 px-4',
 		'border',
-		kind === 'primary' && 'bg-red-600 border-red-600 text-white',
-		kind === 'normal' && 'border-slate-200 bg-white text-slate-800',
+		kind === 'primary' && 'bg-stone-600 border-stone-600 text-white',
+		kind === 'normal' && 'border-stone-600 bg-white text-slate-600',
 		'rounded-md',
 		className
 	)
