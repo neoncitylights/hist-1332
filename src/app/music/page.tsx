@@ -23,22 +23,10 @@ export default function Page() {
                             magna purus sed dolor.
                         </p>
                         <div className='grid grid-cols-2 gap-4 pt-4 border-t border-[#89411A] border-dotted'>
-                            <div className='flex flex-col gap-1'>
-                                <span className='text-sm font-medium text-[#89411A]'>Monthly Listeners</span>
-                                <span className='text-lg'>74.8M</span>
-                            </div>
-                            <div className='flex flex-col gap-1'>
-                                <span className='text-sm font-medium text-[#89411A]'>Subscribers</span>
-                                <span className='text-lg'>53.8M</span>
-                            </div>
-                            <div className='flex flex-col gap-1'>
-                                <span className='text-sm font-medium text-[#89411A]'>Grammy Awards</span>
-                                <span className='text-lg'>185</span>
-                            </div>
-                            <div className='flex flex-col gap-1'>
-                                <span className='text-sm font-medium text-[#89411A]'>First Video</span>
-                                <span className='text-lg'>April 22, 2010</span>
-                            </div>
+                            <ArtistCardStat name="Monthly Listeners" value="74.8M" />
+                            <ArtistCardStat name="Subscribers" value="53.8M" />
+                            <ArtistCardStat name="Grammy Awards" value="185" />
+                            <ArtistCardStat name="First Video" value="April 22, 2010" />
                         </div>
                     </div>
                 </div>
@@ -104,9 +92,26 @@ list.sort((a, b) => {
     return bValue - aValue;
 });
 
-type ArtistCardProps = ComponentProps<'div'>
+type ArtistCardProps = ComponentProps<'div'> & {
+    artistName: string,
+    bio: string,
+}
+
 const ArtistCard = () => {
 
+}
+
+type ArtistCardStatProps = ComponentProps<'div'> & {
+    name: string,
+    value: string,
+}
+const ArtistCardStat = ({name, value}: ArtistCardStatProps) => {
+    return (
+        <div className='flex flex-col gap-1'>
+            <span className='text-sm font-medium text-[#89411A]'>{name}</span>
+            <span className='text-lg'>{value}</span>
+        </div>
+    )
 }
 
 type PlaylistAlbumProps = ComponentProps<'div'> & {
