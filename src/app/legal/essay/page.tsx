@@ -111,7 +111,7 @@ const Highlight = ({children, ...props}: HighlightProps) => {
 type QuoteProps = ComponentProps<'q'>
 const Quote = ({children}: QuoteProps) => {
 	return (
-		<span className="italic font-light text-stone-600">{children}</span>
+		<span className="italic text-stone-600 font-bespokeSerif">{children}</span>
 	)
 }
 

@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 import { twMerge } from 'tailwind-merge'
 import { SiteHeader } from '@/components/SiteHeader'
 import { ComponentProps } from 'react'
-import { IconBrandUnsplash } from '@tabler/icons-react'
+import { IconBrandGithub, IconBrandUnsplash, IconHeart, IconHeartFilled } from '@tabler/icons-react'
 import Link from 'next/link'
 
 /** typefaces */
@@ -74,6 +74,7 @@ type SiteFooterProps = ComponentProps<'footer'>
 const SiteFooter = ({ ...props }: SiteFooterProps) => {
   return (
     <footer className={twMerge(
+      'flex flex-row',
       'px-48 py-12',
       'bg-slate-200 text-slate-700',
       'mt-auto',

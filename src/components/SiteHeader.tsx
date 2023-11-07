@@ -29,12 +29,12 @@ export const SiteHeader = ({ ...props }: SiteHeaderProps) => {
             </Link>
             <nav>
                 <ul className="flex flex-row gap-8 text-lg font-medium text-stone-700">
-                    <li>Homepage</li>
-                    <li>Legal</li>
-                    <li>Social</li>
-                    <li>Tech</li>
-                    <li>Trending</li>
-                    <li>Music</li>
+                    <li><Link href="/homepage">Homepage</Link></li>
+                    <li><Link href="/legal">Legal</Link></li>
+                    <li><Link href="/social">Social</Link></li>
+                    <li><Link href="/tech">Tech</Link></li>
+                    <li><Link href="/trending">Trending</Link></li>
+                    <li><Link href="/music">Music</Link></li>
                 </ul>
             </nav>
         </header>
