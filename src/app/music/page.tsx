@@ -22,10 +22,10 @@ export default function Page() {
                     cardStyles="bg-[#c25e23]"
                     borderStyles="border-[#89411A]"
                 >
-                    <ArtistCardStat name="Monthly Listeners" value="74.8M" />
-                    <ArtistCardStat name="Subscribers" value="53.8M" />
-                    <ArtistCardStat name="Grammy Awards" value="185" />
-                    <ArtistCardStat name="First Video" value="April 22, 2010" />
+                    <ArtistCardStat nameStyles="text-[#89411A]" name="Monthly Listeners" value="74.8M" />
+                    <ArtistCardStat nameStyles="text-[#89411A]" name="Subscribers" value="53.8M" />
+                    <ArtistCardStat nameStyles="text-[#89411A]" name="Grammy Awards" value="185" />
+                    <ArtistCardStat nameStyles="text-[#89411A]" name="First Video" value="April 22, 2010" />
                 </ArtistCard>
                 <div className='flex flex-col w-1/2'>
                     {list.map((item, index) => (
@@ -126,11 +126,12 @@ const ArtistCard = ({
 type ArtistCardStatProps = ComponentProps<'div'> & {
     name: string,
     value: string,
+    nameStyles?: string,
 }
-const ArtistCardStat = ({name, value}: ArtistCardStatProps) => {
+const ArtistCardStat = ({name, value, nameStyles}: ArtistCardStatProps) => {
     return (
         <div className='flex flex-col gap-1'>
-            <span className='text-sm font-medium text-[#89411A]'>{name}</span>
+            <span className={twMerge('text-sm font-medium', nameStyles)}>{name}</span>
             <span className='text-lg'>{value}</span>
         </div>
     )
