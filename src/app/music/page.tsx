@@ -1,6 +1,6 @@
 import { PageHeader } from "@/components/PageHeader";
 import { IconPlayerPlayFilled } from "@tabler/icons-react";
-import { ComponentProps } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
 
 export default function Page() {
@@ -14,11 +14,15 @@ export default function Page() {
                 <ArtistCard
                     albumSource="https://i.scdn.co/image/ab67616d0000b273e6d489d359c546fea254f440"
                     artistName="Ed Sheeran"
-                    bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem diam,
-                    egestas at vehicula quis, molestie sed arcu. Proin ultricies cursus est vel pretium.
-                    Donec cursus varius faucibus. Praesent id nisi sit amet risus sagittis pulvinar.
-                    Aliquam cursus, nisl ac feugiat consequat, est velit vestibulum enim, id sagittis
-                    magna purus sed dolor."
+                    bio={
+                        <>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem diam,
+                            egestas at vehicula quis, molestie sed arcu. Proin ultricies cursus est vel pretium.
+                            Donec cursus varius faucibus. Praesent id nisi sit amet risus sagittis pulvinar.
+                            Aliquam cursus, nisl ac feugiat consequat, est velit vestibulum enim, id sagittis
+                            magna purus sed dolor.
+                        </>
+                    }
                     cardStyles="bg-[#c25e23]"
                     borderStyles="border-[#89411A]"
                 >
@@ -92,7 +96,7 @@ list.sort((a, b) => {
 type ArtistCardProps = ComponentProps<'div'> & {
     albumSource: string,
     artistName: string,
-    bio: string,
+    bio: ReactNode,
     borderStyles: string,
     cardStyles: string,
 }
