@@ -1,7 +1,7 @@
 import { PageHeader } from "@/components/PageHeader";
 import { IconPlayerPlayFilled } from "@tabler/icons-react";
 import { ComponentProps } from "react";
-import { twJoin } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 
 export default function Page() {
     return (
@@ -19,6 +19,8 @@ export default function Page() {
                     Donec cursus varius faucibus. Praesent id nisi sit amet risus sagittis pulvinar.
                     Aliquam cursus, nisl ac feugiat consequat, est velit vestibulum enim, id sagittis
                     magna purus sed dolor."
+                    cardStyles="bg-[#c25e23]"
+                    borderStyles="border-[#89411A]"
                 >
                     <ArtistCardStat name="Monthly Listeners" value="74.8M" />
                     <ArtistCardStat name="Subscribers" value="53.8M" />
@@ -91,18 +93,29 @@ type ArtistCardProps = ComponentProps<'div'> & {
     albumSource: string,
     artistName: string,
     bio: string,
+    borderStyles: string,
+    cardStyles: string,
 }
 
-const ArtistCard = ({albumSource, artistName, bio, children}: ArtistCardProps) => {
+const ArtistCard = ({
+    albumSource,
+    artistName,
+    bio,
+    cardStyles,
+    borderStyles,
+    children
+}: ArtistCardProps) => {
     return (
-        <div className='bg-[#c25e23] rounded-xl'>
+        <div className={twMerge('rounded-xl', cardStyles)}>
             <PlaylistAlbum src={albumSource} />
             <div className='p-4 flex flex-col gap-4 text-white'>
                 <h2 className='text-xl'>{artistName}</h2>
-                <p className='max-w-[30ch] text-sm'>
-                    {bio}
-                </p>
-                <div className='grid grid-cols-2 gap-4 pt-4 border-t border-[#89411A] border-dotted'>
+                <p className='max-w-[30ch] text-sm'>{bio}</p>
+                <div className={twMerge(
+                    'grid grid-cols-2 gap-4 pt-4',
+                    'border-t border-dotted',
+                    borderStyles
+                )}>
                     {children}
                 </div>
             </div>
