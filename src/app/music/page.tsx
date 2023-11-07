@@ -11,25 +11,20 @@ export default function Page() {
                 subTitle="Some of the biggest artists started from the ground-up, right on the YouTube platform."
             />
             <div className='flex flex-row gap-2 items-start'>
-                <div className='bg-[#c25e23] rounded-xl'>
-                    <PlaylistAlbum src="https://i.scdn.co/image/ab67616d0000b273e6d489d359c546fea254f440" />
-                    <div className='p-4 flex flex-col gap-4 text-white'>
-                        <h2 className='text-xl'>Ed Sheeran</h2>
-                        <p className='max-w-[30ch] text-sm'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem diam,
-                            egestas at vehicula quis, molestie sed arcu. Proin ultricies cursus est vel pretium.
-                            Donec cursus varius faucibus. Praesent id nisi sit amet risus sagittis pulvinar.
-                            Aliquam cursus, nisl ac feugiat consequat, est velit vestibulum enim, id sagittis
-                            magna purus sed dolor.
-                        </p>
-                        <div className='grid grid-cols-2 gap-4 pt-4 border-t border-[#89411A] border-dotted'>
-                            <ArtistCardStat name="Monthly Listeners" value="74.8M" />
-                            <ArtistCardStat name="Subscribers" value="53.8M" />
-                            <ArtistCardStat name="Grammy Awards" value="185" />
-                            <ArtistCardStat name="First Video" value="April 22, 2010" />
-                        </div>
-                    </div>
-                </div>
+                <ArtistCard
+                    albumSource="https://i.scdn.co/image/ab67616d0000b273e6d489d359c546fea254f440"
+                    artistName="Ed Sheeran"
+                    bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem diam,
+                    egestas at vehicula quis, molestie sed arcu. Proin ultricies cursus est vel pretium.
+                    Donec cursus varius faucibus. Praesent id nisi sit amet risus sagittis pulvinar.
+                    Aliquam cursus, nisl ac feugiat consequat, est velit vestibulum enim, id sagittis
+                    magna purus sed dolor."
+                >
+                    <ArtistCardStat name="Monthly Listeners" value="74.8M" />
+                    <ArtistCardStat name="Subscribers" value="53.8M" />
+                    <ArtistCardStat name="Grammy Awards" value="185" />
+                    <ArtistCardStat name="First Video" value="April 22, 2010" />
+                </ArtistCard>
                 <div className='flex flex-col w-1/2'>
                     {list.map((item, index) => (
                         <PlaylistItem
@@ -93,12 +88,26 @@ list.sort((a, b) => {
 });
 
 type ArtistCardProps = ComponentProps<'div'> & {
+    albumSource: string,
     artistName: string,
     bio: string,
 }
 
-const ArtistCard = () => {
-
+const ArtistCard = ({albumSource, artistName, bio, children}: ArtistCardProps) => {
+    return (
+        <div className='bg-[#c25e23] rounded-xl'>
+            <PlaylistAlbum src={albumSource} />
+            <div className='p-4 flex flex-col gap-4 text-white'>
+                <h2 className='text-xl'>{artistName}</h2>
+                <p className='max-w-[30ch] text-sm'>
+                    {bio}
+                </p>
+                <div className='grid grid-cols-2 gap-4 pt-4 border-t border-[#89411A] border-dotted'>
+                    {children}
+                </div>
+            </div>
+        </div>
+    )
 }
 
 type ArtistCardStatProps = ComponentProps<'div'> & {
